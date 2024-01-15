@@ -7,13 +7,13 @@ const magazineSchema = new mongoose.Schema({
   title: String,
   year: String,
   pdf: String,
-}, { collection: 'Magazine_data' }); // Specify the collection name
+}, { collection: 'literature_registration' }); // Specify the new collection name
 
 // Create a model based on the schema
 const Magazine = mongoose.model('Magazine', magazineSchema);
 
-// MongoDB connection URI
-const uri = 'mongodb://localhost:27017/Magazine';
+// MongoDB connection URI with the correct database name
+const uri = 'mongodb+srv://minip8681:kle123@cluster0.qbrivbz.mongodb.net/kletech_database';
 
 // Connect to MongoDB
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });

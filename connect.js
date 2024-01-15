@@ -1,32 +1,25 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://minip8681:kle123@cluster0.qbrivbz.mongodb.net/?retryWrites=true&w=majority";
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://01fe21bcs162:Prajwal%402025@cluster0.x1ozi0u.mongodb.net/Magazine', {
-    useNewUrlParser: true,
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
 });
 
-// Define the User schema
-const userSchema = new mongoose.Schema({
-    username: String,
-    password: String,
-}, { collection: 'users' });
-const User = mongoose.model('User', userSchema);
-
-// User details
-const username = 'mini8961';
-const password = 'kletu@123';
-
-// Hash the password and save the user
-bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(password, salt, (err, hash) => {
-        if (err) throw err;
-        const newUser = new User({ username, password: hash });
-        newUser.save()
-            .then(user => {
-                console.log('User saved:', user);
-                mongoose.disconnect();
-            })
-            .catch(err => console.error(err));
-    });
-});
+async function run() {
+  try {
+    // Connect the client to the server  (optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);

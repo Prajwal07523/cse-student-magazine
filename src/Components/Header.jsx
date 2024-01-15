@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.png'; // Add path to logo image
+import logo from './klelogo1.png'; // Add path to logo image
 
 function Header() {
   return (

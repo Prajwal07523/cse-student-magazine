@@ -58,12 +58,16 @@ function AddMagazine() {
     <div className="container1">
         <ToastContainer />
     <div className="formContainer">
+    <h2 className="heading">Add Magazine</h2>
       <form onSubmit={submitImage} className="form">
     <input type="text" placeholder="image" value={image} onChange={(e) => setImage(e.target.value)} className="inputField" required/>
+    <br/>
     <input type="text" placeholder="pdf" value={pdf} onChange={(e) => setPdf(e.target.value)} className="inputField" required/>
+    <br/>
     <input type="text" placeholder="title" value={title} onChange={(e) => settitle(e.target.value)} className="inputField" required/>
+    <br/>
     <input type="text" placeholder="Year" value={year} onChange={(e) => setYear(e.target.value)} className="inputField" required/>
-        <br></br>
+    <br/>
         <button type="submit" className="submitButton">Submit</button>
       </form>
     </div>

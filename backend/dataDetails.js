@@ -8,8 +8,8 @@ const MagazineScehma = new mongoose.Schema(
    pdf:String,
   },
   {
-    collection: "Magazine_data",
+    collection: "literature_registration",
   }
 );
 
-mongoose.model("Magazine_data", MagazineScehma);
+mongoose.model("literature_registration", MagazineScehma);
