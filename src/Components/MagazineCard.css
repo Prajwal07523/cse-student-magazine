@@ -1,0 +1,27 @@
+
+
+  .magazine-card {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    /* width: 300px;  */
+    height: 600px;
+  }
+
+  .btn-primary:hover {
+    background-color: blue;
+    /* Add other hover styles as needed */
+  }
+  
+  .btn-success:hover {
+    background-color: green;
+    /* Add other hover styles as needed */
+  }
+
+  .magazine-image {
+    width: 100%;
+    max-width: 300px; /* Adjust the width as needed */
+    height: auto;
+  }

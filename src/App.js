@@ -5,6 +5,8 @@ import MagazineSection from './Components/MagazineSection';
 import Footer from './Components/Footer';
 import MagazineCard from './Components/MagazineCard';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Adminlogin from "./Components/Adminlogin";
+import AddMagazine from "./Components/AddMagazine";
 import "./App.css";
 
 import ReactDOM from 'react-dom/client';
@@ -20,12 +22,13 @@ function App() {
 
 
   return (
-    <div>
+    <div className="app">
+
       <Header />
       <NavBar />
-     
       <MagazineSection />
       <Footer />
+
     </div>
   );
 }

@@ -1,58 +1,93 @@
 
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import MagazineCard from './MagazineCard';
 import { useNavigate } from "react-router-dom";
+import './MagazineSection.css'; 
+import axios from 'axios';
 
 function MagazineSection() {
   const [searchTerm, setSearchTerm] = useState('');
-  const magazines = [
-        // Dummy data for magazines
-        { imageUrl: 'https://th.bing.com/th/id/OIP.QFiyjl-EOcsWWUnVrNpIGwHaKj?w=186&h=266&c=7&r=0&o=5&dpr=1.4&pid=1.7' ,title: 'CS Association Magazine 2023', category: 'Sports', year: '2023' },
-        {imageUrl: 'https://th.bing.com/th/id/OIP.ZZ-9_Jc7JhB30rHfXPhKLAHaKe?w=186&h=263&c=7&r=0&o=5&dpr=1.4&pid=1.7' , title: 'CS Association Magazine 2022', category: 'Events', year: '2022' },
-        { imageUrl: 'https://th.bing.com/th/id/OIP.suxgSnb6ikYkz77KJ1-5gQHaJl?w=186&h=241&c=7&r=0&o=5&dpr=1.4&pid=1.7' ,title: 'CS Association Magazine 2021', category: 'Events', year: '2021' },
-        { imageUrl: 'https://th.bing.com/th/id/OIP.5eXTgM896Fwtp1CUn50yQAAAAA?w=186&h=241&c=7&r=0&o=5&dpr=1.4&pid=1.7' ,title: 'CS Association Magazine 2020', category: 'Events', year: '2020' },
-        { imageUrl: 'https://th.bing.com/th/id/OIP.pcMFWvhFKQsA8gnsESgarwHaJ1?w=186&h=248&c=7&r=0&o=5&dpr=1.4&pid=1.7' ,title: 'CS Association Magazine 2019', category: 'Events', year: '2019' },
-        { imageUrl: 'https://th.bing.com/th/id/OIP.TVV2Q0fRqseCwtqBjGqjPAHaKe?w=186&h=263&c=7&r=0&o=5&dpr=1.4&pid=1.7' ,title: 'CS Association Magazine 2018', category: 'Events', year: '2018' },
-        // Add more magazines here
-  ];
+  const [filterYear, setFilterYear] = useState('');
+  const [magazines, setMagazines] = useState([]);
+  const navigate = useNavigate();
 
-  const filteredMagazines = magazines.filter(magazine =>
-    magazine.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/get-magazines');
+        const data = response.data.data;
+        setMagazines(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  const navigate=useNavigate();
+    fetchData();
+  }, []);
+
+  const filteredMagazines = magazines.filter(magazine => {
+    const title = magazine.title || '';
+    
+  
+    return (
+      (title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       magazine.year.toString().includes(searchTerm)) &&
+      (filterYear ? magazine.year.toString() === filterYear : true)
+    );
+    
+  });
+  
+
+  const resetFilters = () => {
+    setFilterYear('');
+    setSearchTerm('');
+  };
+
   const handleLoginClick = () => {
-    navigate("/login"); // Corrected path
-    };
+    navigate("/login");
+  };
+
+  const handleLoginClick1 = () => {
+    navigate("/add");
+  };
 
   return (
-    
     <div className="container">
-      <div className="search-bar1">
+           <div className="toolbar">
         <input
           type="text"
           className="form-control"
           placeholder="Search..."
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-      </div>
-      <div>
-      <button className="butt" onClick={handleLoginClick}>AdminLogin</button>
+
+        <select onChange={(e) => setFilterYear(e.target.value)}>
+          <option value="">Filter by Year</option>
+          {Array.from(new Set(magazines.map(mag => mag.year)))
+            .sort().reverse()
+            .map(year => (
+              <option key={year} value={year}>{year}</option>
+          ))}
+        </select>
+
+
+        <button onClick={resetFilters}>Reset Filters</button>
+        <button className="butt" onClick={handleLoginClick}>Admin Login</button>
+        <button className="butt1" onClick={handleLoginClick1}>Add Magazine</button>
       </div>
       <div className="row">
         {filteredMagazines.map((magazine, index) => (
           <div key={index} className="col-md-4 magazine-hover">
             <MagazineCard
-            imageUrl={magazine.imageUrl}
+              image={magazine.imageUrl || magazine.image} // Use imageUrl or image based on your data structure
               title={magazine.title}
-              category={magazine.category}
               year={magazine.year}
+              pdf={magazine.pdfUrl || magazine.pdf} // Use pdfUrl or pdf based on your data structure
             />
           </div>
         ))}
       </div>
-
-      
     </div>
   );
 }

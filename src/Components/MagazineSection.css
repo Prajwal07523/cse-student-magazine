@@ -1,0 +1,118 @@
+/* MagazineSection.css */
+
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.toolbar input[type="text"],
+.toolbar select {
+    margin-right: 10px;
+    flex-grow: 1;
+    max-width: 150px;
+}
+
+
+select {
+    margin-right: 10px;
+  }
+
+.toolbar input[type="text"] {
+    max-width: 200px;
+}
+
+
+.butt {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  }
+  
+  /* Hover effect */
+  .butt:hover {
+    background-color: #2980b9;
+    color: #ecf0f1;
+    transform: translateX(-5px);
+  }
+
+  .butt1 {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  }
+  
+  /* Hover effect */
+  .butt1:hover {
+    background-color: #2980b9;
+    color: #ecf0f1;
+    transform: translateX(-5px);
+  }
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  
+    
+  }
+  
+  /* Row to hold magazine cards */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    margin-top: 20px;
+  }
+  
+  
+  .col-md-4 {
+    flex: 0 0 32%; 
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  .add-magazine-button {
+    margin-top: 20px; 
+  }
+
+
+  input[type="text"], select {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  .form-control {
+    width: 200px;
+    margin-right: 10px;
+  }
+
+  /* Media query for adjusting card width based on screen size */
+@media (max-width: 1200px) {
+    .col-md-4 {
+      flex: 0 0 50%; /* Set the width to half of the container */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .col-md-4 {
+      flex: 0 0 100%; /* Set the width to 100% of the container */
+    }
+  }

@@ -1,49 +1,40 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-
-const app = express();
-
-// Middleware
-app.use(express.json());
-app.use(cors());
-
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/magazineDB', { useNewUrlParser: true, useUnifiedTopology: true });
-
-// Magazine Schema
-const magazineSchema = new mongoose.Schema({
-  imageUrl: String,
-  title: String,
-  category: String,
-  year: String
-});
-
-// Magazine Model
-const Magazine = mongoose.model('Magazine', magazineSchema);
-
-// Routes
-app.get('/magazines', async (req, res) => {
-  try {
-    const magazines = await Magazine.find();
-    res.json(magazines);
-  } catch (error) {
-    res.status(500).send(error);
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://<username>:<password>@cluster0.t7xh5su.mongodb.net/?retryWrites=true&w=majority";
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
   }
 });
-
-app.post('/magazines', async (req, res) => {
+async function run() {
   try {
-    const newMagazine = new Magazine(req.body);
-    const savedMagazine = await newMagazine.save();
-    res.status(201).json(savedMagazine);
-  } catch (error) {
-    res.status(500).send(error);
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
   }
-});
+}
+run().catch(console.dir);
 
-// Start server
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

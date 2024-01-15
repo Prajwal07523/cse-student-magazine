@@ -8,6 +8,10 @@ body {
   overflow-y: scroll;
   background-color: #FFFFFF;
 }
+.app{
+  height: max-content;
+
+}
 
 body, html {
   margin: 0;
@@ -25,7 +29,7 @@ body, html {
 
 .App {
   min-height: 100%;
-  /* Add other styles for App if needed */
+  
 }
 
 
@@ -66,20 +70,6 @@ nav {
 }
 
 
-.container {
-  margin: 20px auto;
-  position: relative;
-  z-index: 1;
-}
-
-.magazine-card {
-  background-color: #FFFFFF;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
-}
-
 footer {
   color: #273238;
   text-align: center;
@@ -88,36 +78,6 @@ footer {
   bottom: 0;
   width: 100%;
   z-index: 1;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-input[type="text"], select {
-  width: 80%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.search-bar {
-  display: flex;
-  justify-content: center; /* Aligns horizontally to the center */
-  align-items: center;
-  width: 50%; /* Adjust the width as needed */
-  margin: 0 auto; /* Centers the search bar in the container */
-}
-
-.search-bar input {
-  flex-grow: 1;
-}
-
-
-.search-results {
-  margin-top: 20px;
 }
 
 .category-options {
@@ -135,20 +95,6 @@ input[type="text"], select {
   cursor: pointer;
 }
 
-
-.btn-primary:hover {
-  background-color: blue;
-  /* Add other hover styles as needed */
-}
-
-.btn-success:hover {
-  background-color: green;
-  /* Add other hover styles as needed */
-}
-
-
-
-
 .logo {
   position: absolute;
   top: 20px;
@@ -158,31 +104,6 @@ input[type="text"], select {
   z-index: 1;
 }
 
-.magazine-image {
-  width: 100%;
-  max-width: 300px; /* Adjust the width as needed */
-  height: auto;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /* background-color: #ccc; */
-  /* Add other styling like padding, background color etc. */
-}
-
-.nav-link {
-  color: black; /* Default link color */
-  /* Add any other styling you need for your links */
-}
-
-.nav-link:hover {
-  color: white; /* Link color when hovered */
-}
-
-
-
 /* Container for magazine cards */
 .container {
   margin: 0 auto;
@@ -190,50 +111,6 @@ input[type="text"], select {
   padding: 20px;
     position: relative;
   
-}
-
-/* Search bar styling */
-.search-bar1 {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.search-bar .form-control {
-  width: 300px; /* Adjust the width of the search bar */
-}
-
-/* Row to hold magazine cards */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Space between cards */
-}
-
-/* Individual magazine card container */
-.col-md-4 {
-  flex: 0 0 32%; /* Adjusts to take about a third of the row's width */
-  max-width: 32%; /* Ensures it doesn't grow larger than a third */
-  /* Additional styling as needed */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .col-md-4 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
-.magazine-hover:hover {
-  transform: translateY(-10px); /* Moves the element up by 10px */
-  transition: transform 0.3s ease; /* Smooth transition for the effect */
-}
-
-.magazine-section {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
 }
 
 /* CSS for MagazineSection.js */
@@ -247,24 +124,7 @@ input[type="text"], select {
   margin-top: 20px; /* Adjust the margin as needed */
 }
 
-.butt {
-  background-color: #3498db;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 10px; /* Adjust as needed */
-  right: 10px; /* Adjust as needed */
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
-}
 
-/* Hover effect */
-.butt:hover {
-  background-color: #2980b9;
-  color: #ecf0f1;
-  transform: translateX(-5px);
-}
 
 .klelogo {
   position: absolute;

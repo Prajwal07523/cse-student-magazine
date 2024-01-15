@@ -1,0 +1,16 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: #ccc; */
+    /* Add other styling like padding, background color etc. */
+  }
+  
+  .nav-link {
+    color: black; /* Default link color */
+    /* Add any other styling you need for your links */
+  }
+  
+  .nav-link:hover {
+    color: white; /* Link color when hovered */
+  }
